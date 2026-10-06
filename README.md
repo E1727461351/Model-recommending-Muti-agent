@@ -17,7 +17,7 @@ python main.py demo --output outputs/my_demo
 
 `demo`在独立输出目录生成合成数据、36个小模型与图模型，再运行全部实验。它使用脚本式模拟推理，没有调用五个真实大模型；五个模型名称只用于验证实验矩阵。模拟表现相同或远优于真实模型时均不能用于论文。演示不写入正式`datasets`和`modelbase`，不覆盖已有输出目录。
 
-本次程序验证记录见`docs/verification.md`。真实数据未补齐时，`python main.py audit`会报告缺少的资产，不静默替换为模拟数据。
+核心测试见`tests/test_core.py`，可使用`python -m unittest discover -s tests -v`运行。真实数据未补齐时，`python main.py audit`会报告缺少的资产，不静默替换为模拟数据。
 
 当前机器另有已安装全部依赖的隔离环境`.venv-mcp`（Python3.12.8、CPU版PyTorch），可用`.\.venv-mcp\Scripts\python.exe main.py ...`直接调用。`requirements-verified.txt`保存该验证环境的依赖版本；它不是论文原环境锁定文件，CPU版PyTorch需使用对应CPU轮子源安装。
 
@@ -40,7 +40,6 @@ python main.py demo --output outputs/my_demo
 |`imos/resources.py`|实际资源快照、可选物理资源压力工具|
 |`scripts/extract_paper.py`|提取论文正文、公式文本、表格和图片|
 |`tests/test_core.py`|可信边界、数据泄漏、图反向传播及指标测试|
-|`docs/reproduction_audit.md`|逐项原文依据、缺失项和实现对应关系|
 
 ## 数据与模型补齐
 
@@ -217,4 +216,3 @@ Dr实验先向任务输入提供幅值变化事实，不给大模型原始信号
 模型原因才影响Trun；资源和数据原因不直接惩罚模型。恢复重試有界，失败也写日志。输入恢复是请求重新读取源数据，不凭空生成替代数据；源未恢复则明确失败。动作重规划会重新运行SGAP，不接受大模型虚构的数值结果。
 
 `monitor.input_bounds`与`monitor.output_bounds`可设置事先确定的正常值域；默认空值表示论文没有提供可采用的物理边界。有限性、来源、完整性和资源满足性始终检查。不能把默认未设置的值域或任务质量要求说成已经验证。
-
