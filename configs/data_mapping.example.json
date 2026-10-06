@@ -1,0 +1,8 @@
+{
+  "说明": "必须显式使用物理试件划分后的三个文件；修改列名、标签及路径，不自动随机拆分时间窗口",
+  "splits": {
+    "train": {"path": "../datasets/D1/raw/train.csv", "x_columns": ["force", "current", "vibration"], "y_column": "wear", "group_column": "part_id"},
+    "val": {"path": "../datasets/D1/raw/val.csv", "x_columns": ["force", "current", "vibration"], "y_column": "wear", "group_column": "part_id"},
+    "test": {"path": "../datasets/D1/raw/test.csv", "x_columns": ["force", "current", "vibration"], "y_column": "wear", "group_column": "part_id"}
+  }
+}

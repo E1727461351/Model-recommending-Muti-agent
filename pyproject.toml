@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "imos-trust-gums"
+version = "0.1.0"
+description = "面向智能制造操作系统的可信模型推荐复现工程"
+requires-python = ">=3.9"
+dependencies = ["numpy>=1.23,<3", "scipy>=1.9,<2", "scikit-learn>=1.2,<2", "torch>=2.0,<3", "matplotlib>=3.6,<4", "packaging>=23", "cryptography>=41", "psutil>=5.9"]
+
+[project.optional-dependencies]
+agents = ["langchain-core>=0.3,<2", "mcp>=1.12,<2"]
+
+[project.scripts]
+imos = "imos.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["imos*"]

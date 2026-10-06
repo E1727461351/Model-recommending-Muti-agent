@@ -1,0 +1,7 @@
+# 统一文本文件换行，避免Windows与Linux往返产生无关差异
+* text=auto
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.txt text eol=lf

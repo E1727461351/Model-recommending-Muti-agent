@@ -1,0 +1,25 @@
+# 忽略运行产物、私有数据和密钥，保留说明与配置
+__pycache__/
+*.py[cod]
+.venv/
+.venv*/
+.env
+.env.*
+!.env.example
+outputs/
+datasets/**/*
+!datasets/**/
+!datasets/**/README.md
+!datasets/**/.gitkeep
+modelbase/**/*
+!modelbase/**/
+!modelbase/**/README.md
+!modelbase/**/.gitkeep
+!modelbase/registry.json
+docs/paper_extracted.txt
+docs/paper_media/
+*.log
+*.egg-info/
+*.pem
+*.key
+.pytest_cache/
